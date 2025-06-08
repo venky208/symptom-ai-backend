@@ -1,0 +1,403 @@
+{
+  "diseases": [
+
+    {
+      "name": "Common Cold",
+      "symptoms": ["cough", "sneezing", "runny nose", "sore throat", "fatigue"],
+      "description": "Viral infection of the upper respiratory tract",
+      "recommendation": "Rest, fluids, and over-the-counter cold remedies"
+    },
+    {
+      "name": "Influenza (Flu)",
+      "symptoms": ["fever", "cough", "muscle aches", "chills", "fatigue", "headache"],
+      "description": "Viral infection affecting the respiratory system",
+      "recommendation": "Rest, fluids, antiviral medication if caught early"
+    },
+    {
+      "name": "Allergies",
+      "symptoms": ["sneezing", "runny nose", "itching", "redness"],
+      "description": "Immune system reaction to harmless substances",
+      "recommendation": "Antihistamines, avoid allergens"
+    },
+    {
+      "name": "Migraine",
+      "symptoms": ["headache", "nausea", "dizziness", "sensitivity to light"],
+      "description": "Neurological condition causing severe headaches",
+      "recommendation": "Pain relievers, rest in dark room"
+    },
+    {
+      "name": "Gastroenteritis",
+      "symptoms": ["abdominal pain", "diarrhea", "vomiting", "nausea"],
+      "description": "Inflammation of the stomach and intestines",
+      "recommendation": "Hydration, bland diet, rest"
+    },
+    {
+      "name": "COVID-19",
+      "symptoms": ["fever", "cough", "shortness of breath", "fatigue", "loss of taste or smell"],
+      "description": "Respiratory illness caused by coronavirus",
+      "recommendation": "Isolate, get tested, seek medical attention if severe"
+    },
+
+
+    {
+      "name": "Hypertension",
+      "symptoms": ["headache", "dizziness", "blurred vision", "nosebleeds"],
+      "description": "High blood pressure that can lead to serious complications",
+      "recommendation": "Regular monitoring, medication, low-sodium diet"
+    },
+    {
+      "name": "Diabetes Type 2",
+      "symptoms": ["excessive thirst", "frequent urination", "fatigue", "blurred vision", "slow healing wounds"],
+      "description": "Chronic condition affecting sugar metabolism",
+      "recommendation": "Blood sugar monitoring, diet control, exercise"
+    },
+    {
+      "name": "Anemia",
+      "symptoms": ["fatigue", "pale skin", "shortness of breath", "dizziness", "cold hands/feet"],
+      "description": "Low red blood cell count or hemoglobin",
+      "recommendation": "Iron supplements, dietary changes, identify underlying cause"
+    },
+    {
+      "name": "Hypothyroidism",
+      "symptoms": ["fatigue", "weight gain", "dry skin", "hair loss", "depression"],
+      "description": "Underactive thyroid gland",
+      "recommendation": "Thyroid hormone replacement therapy"
+    },
+    {
+      "name": "Hyperthyroidism",
+      "symptoms": ["weight loss", "heart palpitations", "excessive sweating", "anxiety", "tremors"],
+      "description": "Overactive thyroid gland",
+      "recommendation": "Anti-thyroid medication, possible radioactive iodine therapy"
+    },
+    {
+      "name": "Rheumatoid Arthritis",
+      "symptoms": ["joint pain", "morning stiffness", "fatigue", "swelling", "fever"],
+      "description": "Autoimmune disorder affecting joints",
+      "recommendation": "Anti-inflammatory drugs, DMARDs, physical therapy"
+    },
+    {
+      "name": "Osteoarthritis",
+      "symptoms": ["joint pain", "stiffness", "loss of flexibility", "bone spurs"],
+      "description": "Degenerative joint disease",
+      "recommendation": "Pain relievers, physical therapy, weight management"
+    },
+    {
+      "name": "Gout",
+      "symptoms": ["intense joint pain", "redness", "swelling", "warmth in joint"],
+      "description": "Inflammatory arthritis from uric acid crystals",
+      "recommendation": "Anti-inflammatory drugs, dietary changes, hydration"
+    },
+    {
+      "name": "Chronic Fatigue Syndrome",
+      "symptoms": ["extreme fatigue", "memory problems", "sore throat", "muscle pain"],
+      "description": "Complex disorder with extreme fatigue",
+      "recommendation": "Graded exercise therapy, cognitive behavioral therapy"
+    },
+    {
+      "name": "Fibromyalgia",
+      "symptoms": ["widespread pain", "fatigue", "sleep problems", "memory issues"],
+      "description": "Chronic pain condition",
+      "recommendation": "Pain management, antidepressants, exercise"
+    },
+    {
+      "name": "Lyme Disease",
+      "symptoms": ["bullseye rash", "fever", "fatigue", "joint pain", "headache"],
+      "description": "Tick-borne bacterial infection",
+      "recommendation": "Antibiotics, early treatment is crucial"
+    },
+    {
+      "name": "Mononucleosis",
+      "symptoms": ["fatigue", "sore throat", "fever", "swollen lymph nodes"],
+      "description": "Viral infection often called 'mono'",
+      "recommendation": "Rest, fluids, symptom management"
+    },
+    {
+      "name": "Pneumonia",
+      "symptoms": ["cough", "fever", "shortness of breath", "chest pain"],
+      "description": "Lung infection",
+      "recommendation": "Antibiotics, rest, hospitalization if severe"
+    },
+    {
+      "name": "Bronchitis",
+      "symptoms": ["cough", "mucus production", "fatigue", "shortness of breath"],
+      "description": "Inflammation of bronchial tubes",
+      "recommendation": "Rest, fluids, cough suppressants"
+    },
+    {
+      "name": "Asthma",
+      "symptoms": ["wheezing", "shortness of breath", "chest tightness", "cough"],
+      "description": "Chronic inflammatory airway disease",
+      "recommendation": "Inhalers, avoid triggers, long-term control meds"
+    },
+    {
+      "name": "COPD",
+      "symptoms": ["chronic cough", "shortness of breath", "wheezing", "chest tightness"],
+      "description": "Chronic obstructive pulmonary disease",
+      "recommendation": "Bronchodilators, oxygen therapy, smoking cessation"
+    },
+    {
+      "name": "Tuberculosis",
+      "symptoms": ["chronic cough", "fever", "night sweats", "weight loss"],
+      "description": "Bacterial infection mainly affecting lungs",
+      "recommendation": "Long-term antibiotic treatment"
+    },
+    {
+      "name": "Urinary Tract Infection",
+      "symptoms": ["painful urination", "frequent urination", "blood in urine", "pelvic pain"],
+      "description": "Infection in urinary system",
+      "recommendation": "Antibiotics, increased fluid intake"
+    },
+    {
+      "name": "Kidney Stones",
+      "symptoms": ["severe pain in side/back", "painful urination", "blood in urine", "nausea"],
+      "description": "Hard mineral deposits in kidneys",
+      "recommendation": "Pain relief, hydration, possible medical procedures"
+    },
+    {
+      "name": "Endometriosis",
+      "symptoms": ["painful periods", "pelvic pain", "pain during sex", "infertility"],
+      "description": "Uterine tissue growing outside uterus",
+      "recommendation": "Pain medication, hormone therapy, possible surgery"
+    },
+    {
+      "name": "PCOS",
+      "symptoms": ["irregular periods", "excess hair growth", "acne", "weight gain"],
+      "description": "Polycystic ovary syndrome",
+      "recommendation": "Lifestyle changes, hormone therapy, fertility treatment"
+    },
+    {
+      "name": "Prostatitis",
+      "symptoms": ["painful urination", "pelvic pain", "frequent urination", "fever"],
+      "description": "Inflamed prostate gland",
+      "recommendation": "Antibiotics, pain relievers, warm baths"
+    },
+    {
+      "name": "Erectile Dysfunction",
+      "symptoms": ["difficulty maintaining erection", "reduced sexual desire"],
+      "description": "Inability to achieve/maintain erection",
+      "recommendation": "Medications, lifestyle changes, counseling"
+    },
+    {
+      "name": "Gallstones",
+      "symptoms": ["sudden abdominal pain", "back pain", "nausea", "vomiting"],
+      "description": "Hardened deposits in gallbladder",
+      "recommendation": "Pain management, possible gallbladder removal"
+    },
+    {
+      "name": "Cirrhosis",
+      "symptoms": ["fatigue", "easy bruising", "jaundice", "swelling in legs"],
+      "description": "Late stage liver scarring",
+      "recommendation": "Alcohol cessation, medication, possible transplant"
+    },
+    {
+      "name": "Hepatitis",
+      "symptoms": ["fatigue", "jaundice", "abdominal pain", "nausea"],
+      "description": "Liver inflammation",
+      "recommendation": "Rest, antiviral medication, vaccination for prevention"
+    },
+    {
+      "name": "Celiac Disease",
+      "symptoms": ["diarrhea", "bloating", "fatigue", "weight loss"],
+      "description": "Gluten intolerance damaging small intestine",
+      "recommendation": "Strict gluten-free diet"
+    },
+    {
+      "name": "Irritable Bowel Syndrome",
+      "symptoms": ["abdominal pain", "bloating", "diarrhea", "constipation"],
+      "description": "Chronic digestive disorder",
+      "recommendation": "Diet changes, stress management, medication"
+    },
+    {
+      "name": "Crohn's Disease",
+      "symptoms": ["diarrhea", "abdominal pain", "fatigue", "weight loss"],
+      "description": "Inflammatory bowel disease",
+      "recommendation": "Anti-inflammatory drugs, immune suppressants"
+    },
+    {
+      "name": "Ulcerative Colitis",
+      "symptoms": ["diarrhea with blood", "abdominal pain", "rectal pain", "weight loss"],
+      "description": "Inflammatory bowel disease affecting colon",
+      "recommendation": "Anti-inflammatory drugs, possible surgery"
+    },
+    {
+      "name": "Diverticulitis",
+      "symptoms": ["abdominal pain", "fever", "nausea", "constipation"],
+      "description": "Inflamed pouches in colon",
+      "recommendation": "Antibiotics, liquid diet, possible surgery"
+    },
+    {
+      "name": "Appendicitis",
+      "symptoms": ["sudden abdominal pain", "loss of appetite", "nausea", "fever"],
+      "description": "Inflamed appendix",
+      "recommendation": "Emergency surgery (appendectomy)"
+    },
+    {
+      "name": "Peptic Ulcer",
+      "symptoms": ["burning stomach pain", "bloating", "heartburn", "nausea"],
+      "description": "Sores in stomach lining",
+      "recommendation": "Antibiotics, acid-reducing medication"
+    },
+    {
+      "name": "GERD",
+      "symptoms": ["heartburn", "regurgitation", "chest pain", "difficulty swallowing"],
+      "description": "Chronic acid reflux",
+      "recommendation": "Lifestyle changes, antacids, proton pump inhibitors"
+    },
+    {
+      "name": "Shingles",
+      "symptoms": ["painful rash", "burning sensation", "sensitivity to touch", "fever"],
+      "description": "Viral infection causing painful rash",
+      "recommendation": "Antiviral medication, pain relievers, vaccination"
+    },
+    {
+      "name": "Psoriasis",
+      "symptoms": ["red patches with scales", "dry skin", "itching", "joint pain"],
+      "description": "Autoimmune skin condition",
+      "recommendation": "Topical treatments, light therapy, systemic medications"
+    },
+    {
+      "name": "Eczema",
+      "symptoms": ["itchy skin", "redness", "dry skin", "scaly patches"],
+      "description": "Chronic skin inflammation",
+      "recommendation": "Moisturizers, topical steroids, identify triggers"
+    },
+    {
+      "name": "Rosacea",
+      "symptoms": ["facial redness", "visible blood vessels", "swollen bumps", "eye irritation"],
+      "description": "Chronic skin condition affecting face",
+      "recommendation": "Topical medications, laser therapy, avoid triggers"
+    },
+    {
+      "name": "Vitiligo",
+      "symptoms": ["white patches on skin", "premature whitening of hair"],
+      "description": "Loss of skin pigmentation",
+      "recommendation": "Topical treatments, light therapy, cosmetic coverings"
+    },
+    {
+      "name": "Multiple Sclerosis",
+      "symptoms": ["numbness", "tingling", "vision problems", "fatigue", "balance issues"],
+      "description": "Autoimmune disease affecting nervous system",
+      "recommendation": "Disease-modifying therapies, symptom management"
+    },
+    {
+      "name": "Parkinson's Disease",
+      "symptoms": ["tremors", "stiffness", "slow movement", "balance problems"],
+      "description": "Progressive nervous system disorder",
+      "recommendation": "Medication, physical therapy, possible surgery"
+    },
+    {
+      "name": "Alzheimer's Disease",
+      "symptoms": ["memory loss", "confusion", "difficulty concentrating", "mood changes"],
+      "description": "Progressive brain disorder",
+      "recommendation": "Medications to slow progression, supportive care"
+    },
+    {
+      "name": "Epilepsy",
+      "symptoms": ["seizures", "temporary confusion", "staring spells", "uncontrollable movements"],
+      "description": "Neurological disorder with recurrent seizures",
+      "recommendation": "Anti-seizure medications, possible surgery"
+    },
+    {
+      "name": "Migraine",
+      "symptoms": ["severe headache", "nausea", "sensitivity to light", "aura"],
+      "description": "Neurological condition causing severe headaches",
+      "recommendation": "Pain relievers, preventive medications, identify triggers"
+    },
+    {
+      "name": "Tension Headache",
+      "symptoms": ["mild to moderate head pain", "tightness around forehead"],
+      "description": "Common headache from muscle tension",
+      "recommendation": "Pain relievers, stress management, relaxation techniques"
+    },
+    {
+      "name": "Cluster Headache",
+      "symptoms": ["severe pain around one eye", "tearing", "nasal congestion"],
+      "description": "Very painful headaches occurring in clusters",
+      "recommendation": "Oxygen therapy, triptans, preventive medications"
+    },
+    {
+      "name": "Carpal Tunnel Syndrome",
+      "symptoms": ["hand numbness", "tingling", "weakness", "pain"],
+      "description": "Compressed nerve in wrist",
+      "recommendation": "Wrist splinting, corticosteroid injections, possible surgery"
+    },
+    {
+      "name": "Osteoporosis",
+      "symptoms": ["back pain", "loss of height", "stooped posture", "bone fractures"],
+      "description": "Brittle bones from loss of tissue",
+      "recommendation": "Calcium/vitamin D, weight-bearing exercise, medication"
+    },
+    {
+      "name": "Scoliosis",
+      "symptoms": ["uneven shoulders", "one hip higher", "leaning to one side"],
+      "description": "Abnormal spine curvature",
+      "recommendation": "Bracing, physical therapy, possible surgery"
+    },
+    {
+      "name": "Bursitis",
+      "symptoms": ["joint pain", "swelling", "stiffness", "warmth around joint"],
+      "description": "Inflamed fluid-filled pads cushioning joints",
+      "recommendation": "Rest, ice, pain relievers, possible steroid injection"
+    },
+    {
+      "name": "Tendinitis",
+      "symptoms": ["pain near joints", "stiffness", "mild swelling"],
+      "description": "Inflamed tendons",
+      "recommendation": "Rest, ice, physical therapy, pain relievers"
+    },
+    {
+      "name": "Lupus",
+      "symptoms": ["fatigue", "joint pain", "rash", "fever"],
+      "description": "Autoimmune disease affecting multiple systems",
+      "recommendation": "Anti-inflammatory drugs, immunosuppressants"
+    },
+    {
+      "name": "Sjogren's Syndrome",
+      "symptoms": ["dry eyes", "dry mouth", "fatigue", "joint pain"],
+      "description": "Autoimmune disorder affecting moisture-producing glands",
+      "recommendation": "Symptom relief, moisture replacement therapies"
+    },
+    {
+      "name": "Raynaud's Phenomenon",
+      "symptoms": ["cold fingers/toes", "color changes in skin", "numbness"],
+      "description": "Blood vessel spasms limiting circulation",
+      "recommendation": "Keep warm, avoid triggers, vasodilators"
+    },
+    {
+      "name": "Chronic Kidney Disease",
+      "symptoms": ["fatigue", "swelling", "shortness of breath", "nausea"],
+      "description": "Progressive loss of kidney function",
+      "recommendation": "Diet management, blood pressure control, possible dialysis"
+    },
+    {
+      "name": "Prostate Cancer",
+      "symptoms": ["difficulty urinating", "blood in urine", "pelvic discomfort"],
+      "description": "Cancer of prostate gland",
+      "recommendation": "Regular screening, various treatment options"
+    },
+    {
+      "name": "Breast Cancer",
+      "symptoms": ["breast lump", "nipple discharge", "skin changes", "pain"],
+      "description": "Malignant tumor in breast tissue",
+      "recommendation": "Regular screening, various treatment options"
+    },
+    {
+      "name": "Lung Cancer",
+      "symptoms": ["persistent cough", "shortness of breath", "chest pain", "weight loss"],
+      "description": "Malignant lung tumor",
+      "recommendation": "Smoking cessation, various treatment options"
+    },
+    {
+      "name": "Colon Cancer",
+      "symptoms": ["change in bowel habits", "rectal bleeding", "abdominal discomfort", "weight loss"],
+      "description": "Cancer of colon or rectum",
+      "recommendation": "Regular screening, various treatment options"
+    },
+    {
+      "name": "Melanoma",
+      "symptoms": ["changing mole", "irregular skin lesion", "itchiness", "bleeding"],
+      "description": "Serious skin cancer",
+      "recommendation": "Regular skin checks, sun protection, surgical removal"
+    }
+  ]
+}

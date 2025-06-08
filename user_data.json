@@ -1,0 +1,10 @@
+{
+  "current_user": {
+    "symptoms": "fever, cough",
+    "time": "3days",
+    "severity": "\ud83d\udfe2 Low severity: Symptoms ongoing for less than 1 month.",
+    "additional_info": "",
+    "other_data": [],
+    "severity_rating": "medium"
+  }
+}
