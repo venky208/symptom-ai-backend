@@ -12,7 +12,7 @@ app = FastAPI()
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Replace with Netlify domain for security: ["https://your-app.netlify.app"]
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -21,7 +21,6 @@ app.add_middleware(
 # Load data files
 with open('symptoms.json') as f:
     symptoms_data = json.load(f)
-    # Update tracked symptoms in handle_response
     from handle_response import TRACKED_KEYWORDS
     TRACKED_KEYWORDS['symptoms'] = [symptom.lower() for symptom in symptoms_data['symptoms']]
 
@@ -90,86 +89,89 @@ def normalize_input(text: str) -> str:
 
 @app.post("/chat")
 async def chat(chat_request: ChatRequest):
-    user_message = chat_request.message.strip()
-    current_phase = chat_request.phase
-    user_id = chat_request.user_id
-    
-    # First try to get response from handle_response
-    response, next_phase = get_response(user_id, user_message, current_phase)
-    
-    # If no specific response was generated, proceed with phase handling
-    if not response:
-        if user_id not in user_data:
-            user_data[user_id] = {
-                'symptoms': '',
-                'time': '',
-                'severity': '',
-                'additional_info': '',
-                'other_data': []
-            }
+    try:
+        user_message = chat_request.message.strip()
+        current_phase = chat_request.phase
+        user_id = chat_request.user_id
+
+        print(f"📩 Incoming request from {user_id} in phase {current_phase}: {user_message}")
         
-        if current_phase == 'symptoms':
-            if any(word in user_message.lower() for word in TRACKED_KEYWORDS['symptoms']):
-                user_data[user_id]['symptoms'] = user_message
-                response = "When did you notice these symptoms? (e.g., '3 days ago')"
-                next_phase = 'time'
-            else:
-                response = "I need symptoms to help you. Please describe how you're feeling."
-        
-        elif current_phase == 'time':
-            days = parse_time_input(user_message)
-            if days is not None:
-                severity = get_severity(days)
-                user_data[user_id]['time'] = user_message
-                user_data[user_id]['severity'] = severity
-                response = f"{severity}\nHow would you rate the severity? (High/Medium/Low)"
-                next_phase = 'severity'
-            elif any(word in user_message.lower() for word in TRACKED_KEYWORDS['symptoms']):
-                if user_data[user_id]['symptoms']:
-                    user_data[user_id]['symptoms'] += f", {user_message}"
-                else:
+        response, next_phase = get_response(user_id, user_message, current_phase)
+
+        if not response:
+            if user_id not in user_data:
+                user_data[user_id] = {
+                    'symptoms': '',
+                    'time': '',
+                    'severity': '',
+                    'additional_info': '',
+                    'other_data': []
+                }
+
+            if current_phase == 'symptoms':
+                if any(word in user_message.lower() for word in TRACKED_KEYWORDS['symptoms']):
                     user_data[user_id]['symptoms'] = user_message
-                response = "Added symptom. When did symptoms start? (e.g., '3 days ago')"
-            else:
-                response = "Please enter when symptoms started (e.g., '2 days ago')"
-        
-        elif current_phase == 'severity':
-            if user_keywords[user_id]['severity']:
-                user_data[user_id]['severity_rating'] = user_keywords[user_id]['severity']
-                response = "Is there anything else? Type 'prediction' for analysis."
-                next_phase = 'final'
-            else:
-                response = "Please choose: High, Medium, or Low severity"
-        
-        elif current_phase == 'final':
-            normalized_input = normalize_input(user_message)
-
-            if 'prediction' in normalized_input:
-                matches = predict_disease(user_data[user_id]['symptoms'])
-                if not matches:
-                    response = "❌ No matching conditions found."
+                    response = "When did you notice these symptoms? (e.g., '3 days ago')"
+                    next_phase = 'time'
                 else:
-                    response = "🔍 Possible conditions:\n\n" + "\n\n".join( 
-                        f"{i}. 🏥 {m['name']} ({m['match_percentage']}%)\n"
-                        f"   📝 {m['description']}\n"
-                        f"   💊 {m['recommendation']}\n"
-                        f"   ✅ Matching symptoms: {', '.join(m['matched_symptoms'])}"
-                        for i, m in enumerate(matches, 1)
-                    ) + "\n\n⚠️ Consult a healthcare professional."
+                    response = "I need symptoms to help you. Please describe how you're feeling."
 
-            elif 'mydata' in normalized_input:
-                response = (
-                    "📋 Your information:\n"
-                    f"🤒 Symptoms: {user_data[user_id]['symptoms']}\n"
-                    f"⏰ Onset: {user_data[user_id]['time']}\n"
-                    f"⚠️ Severity: {user_data[user_id]['severity']}\n"
-                    f"📝 Additional info: {user_data[user_id]['additional_info'].replace('hi', '')}"
-                )
-            else:
-                response = "Type 'prediction' for analysis or 'my data' to review."
-    
-    save_user_data()
-    return {"response": response, "nextPhase": next_phase}
+            elif current_phase == 'time':
+                days = parse_time_input(user_message)
+                if days is not None:
+                    severity = get_severity(days)
+                    user_data[user_id]['time'] = user_message
+                    user_data[user_id]['severity'] = severity
+                    response = f"{severity}\nHow would you rate the severity? (High/Medium/Low)"
+                    next_phase = 'severity'
+                elif any(word in user_message.lower() for word in TRACKED_KEYWORDS['symptoms']):
+                    user_data[user_id]['symptoms'] += f", {user_message}"
+                    response = "Added symptom. When did symptoms start? (e.g., '3 days ago')"
+                else:
+                    response = "Please enter when symptoms started (e.g., '2 days ago')"
+
+            elif current_phase == 'severity':
+                if user_keywords[user_id]['severity']:
+                    user_data[user_id]['severity_rating'] = user_keywords[user_id]['severity']
+                    response = "Is there anything else? Type 'prediction' for analysis."
+                    next_phase = 'final'
+                else:
+                    response = "Please choose: High, Medium, or Low severity"
+
+            elif current_phase == 'final':
+                normalized_input = normalize_input(user_message)
+
+                if 'prediction' in normalized_input:
+                    matches = predict_disease(user_data[user_id]['symptoms'])
+                    if not matches:
+                        response = "❌ No matching conditions found."
+                    else:
+                        response = "🔍 Possible conditions:\n\n" + "\n\n".join( 
+                            f"{i}. 🏥 {m['name']} ({m['match_percentage']}%)\n"
+                            f"   📝 {m['description']}\n"
+                            f"   💊 {m['recommendation']}\n"
+                            f"   ✅ Matching symptoms: {', '.join(m['matched_symptoms'])}"
+                            for i, m in enumerate(matches, 1)
+                        ) + "\n\n⚠️ Consult a healthcare professional."
+
+                elif 'mydata' in normalized_input:
+                    response = (
+                        "📋 Your information:\n"
+                        f"🤒 Symptoms: {user_data[user_id]['symptoms']}\n"
+                        f"⏰ Onset: {user_data[user_id]['time']}\n"
+                        f"⚠️ Severity: {user_data[user_id]['severity']}\n"
+                        f"📝 Additional info: {user_data[user_id]['additional_info'].replace('hi', '')}"
+                    )
+                else:
+                    response = "Type 'prediction' for analysis or 'my data' to review."
+
+        save_user_data()
+        print(f"✅ Response to {user_id}: {response}")
+        return {"response": response, "nextPhase": next_phase}
+
+    except Exception as e:
+        print(f"❌ Error processing chat: {str(e)}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
 
 if __name__ == "__main__":
     import uvicorn
