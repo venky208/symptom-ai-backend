@@ -87,6 +87,11 @@ def predict_disease(symptoms_text: str) -> list:
 def normalize_input(text: str) -> str:
     return re.sub(r'\W+', '', text.lower())
 
+@app.get("/")
+def root():
+    return {"message": "Backend is live 🚀"}
+
+
 @app.post("/chat")
 async def chat(chat_request: ChatRequest):
     try:
